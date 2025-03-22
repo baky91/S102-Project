@@ -57,12 +57,7 @@
 		<Unit filename="src/Objet.cpp" />
 		<Unit filename="src/Personnage.cpp" />
 		<Unit filename="src/Tuile.cpp" />
-		<Unit filename="src/main.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="src/mainTest.cpp">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
