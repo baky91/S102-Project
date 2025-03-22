@@ -8,8 +8,8 @@ Le but du jeu est de récupérer tous les bonus du niveau tout en évitant les e
 
 ### CodeBlocks
 Ce projet a été réalisé sur CodeBlocks, si vous souhaitez le lancer avec CodeBlocks assurez vous que ces points sont respectés:
-#### Static Linking désactivé : Settings > Compiler > Compiler settings
-#### Chemin du compilateur correct : Settings > Compiler > Toolchain executables > Compiler's installation directory : [Chemin de CodeBlocks]\CodeBlocks\MinGW
+- Static Linking désactivé : Settings > Compiler > Compiler settings
+- Chemin du compilateur correct : Settings > Compiler > Toolchain executables > Compiler's installation directory : [Chemin de CodeBlocks]\CodeBlocks\MinGW
 
 Ensuite, lancez le fichier "s102.cbp" pour ouvrir le projet. Puis Run.
 
