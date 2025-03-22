@@ -10,37 +10,12 @@ using namespace std;
 
 int main(int, char**) // Version special du main, ne pas modifier
 {
-  // Initialisation du jeu
-  Moteur moteur("Mon super jeu vidéo");
+    // Initialisation du jeu
+    Moteur moteur("Mon super jeu vidéo");
 
-  // TODO: charger images, creer personnages, etc.
+    // TODO: charger images, creer personnages, etc.
 
-    Image image;
-    try {
-        image = Image(moteur, "assets/fond.png");
-    }
-    catch(runtime_error &e){
-        cerr<<"Erreur : "<<e.what()<< endl;
-    }
-
-//coffre----------------
-    Image coffrefer;
-    try{
-        coffrefer = Image(moteur, "assets/coffre_ferme.png");
-    }
-    catch(runtime_error &e){
-        cerr<<"Erreur : "<<e.what()<< endl;
-    }
-    Image coffreouv;
-    try{
-        coffreouv = Image(moteur, "assets/coffre_ouvert.png");
-    }
-    catch(runtime_error &e){
-        cerr<<"Erreur : "<<e.what()<< endl;
-    }
-//coffre----------------
-
-//chargement des images, niveau et dictionnaire
+    //chargement des images, niveau et dictionnaire
     Image objets(moteur, "assets/objets.png");
     Dictionnaire dictionnaire("assets/dictionnaire.txt");
     Niveau niveau1(objets, "assets/niveau1.txt", dictionnaire);
@@ -52,32 +27,26 @@ int main(int, char**) // Version special du main, ne pas modifier
     // Directions
     // 0 = Bas ; 1 = Gauche ; 2 = Droite ; 3 = Haut;
 
+    //personnages-----------
     Personnage perso1(personnages,7,0,1,1);
     Personnage ennemi1(personnages,10,0,5,1);
     Personnage ennemi2(personnages,1,4,1,5);
     int dir1, dir2;         //  directions des deux ennemis qui seront actualisées dans chaque boucles du jeu
 
+    bool quitter = false;
+    //  bool coffreouvert = false;
 
-
-//personnages-----------
-
-  bool quitter = false;
-//  bool coffreouvert = false;
-
-  // Boucle de jeu, appelee a chaque fois que l'ecran doit etre mis a jour
-  // (en general, 60 fois par seconde)
-  while (!quitter)
-  {
-//    image.dessiner(0,0);
-
-
+    // Boucle de jeu, appelee a chaque fois que l'ecran doit etre mis a jour
+    // (en general, 60 fois par seconde)
+    while (!quitter)
+    {
 
     // I. Gestion des evenements
     Evenement evenement = moteur.evenementRecu();
     while (evenement != AUCUN)
     {
-      switch (evenement)
-      {
+        switch (evenement)
+        {
 //         QUITTER = croix de la fenetre ou Echap
         case QUITTER_APPUYE:
             quitter = true;
@@ -118,10 +87,10 @@ int main(int, char**) // Version special du main, ne pas modifier
             break;
 
         default:
-          break;
-      }
+            break;
+        }
 
-      evenement = moteur.evenementRecu();
+        evenement = moteur.evenementRecu();
     }
 
 
@@ -203,7 +172,8 @@ int main(int, char**) // Version special du main, ne pas modifier
 
     moteur.finaliserRendu();
 
-  }
+    }
+    // SORTIE DE LA BOUCLE
 
 // SI ON GAGNE OU ON PERD ON ATTEND UN PEU POUR NE PAS AFFICHER L'IMAGE DE FIN DIRECTEMENT
     if(perso1.touche(ennemi1) || perso1.touche(ennemi2) || niveau1.gagne())
@@ -228,5 +198,5 @@ int main(int, char**) // Version special du main, ne pas modifier
     if(perso1.touche(ennemi1) || perso1.touche(ennemi2) || niveau1.gagne())
         moteur.attendre(3);
 
-  return 0;
+    return 0;
 }
